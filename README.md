@@ -25,6 +25,7 @@ Be careful every component has it's own dependencies!
 ## Crontab
 
 I have put the following line into crontab:
+
 00 0    * * *   root    bash /home/services/metagenomics/analyse.sh >>/home/services/metagenomics/log/stdout.txt 2>>/home/services/metagenomics/log/stderr.txt
 
 ## Working
@@ -36,3 +37,5 @@ make helpdesk. If there is no interaction, users cannot brake anything.
 However there are some limitation. The script assume the user upload gzipped, paired-end files and the length is 2x 150.
 
 There is a shiny server in port 3838 with Pavian. Right now users need to download the report files and upload here to visualize the results.
+
+The service right now does not store sequences. Delete it after process to prevent disk overflow.

@@ -16,7 +16,7 @@ do
 	mv $NAME $UPLOAD/$FQ2 $INPUTDATA
 	$FASTQC -o $OUTPUT $INPUTDATA/$FQ1 $INPUTDATA/$FQ2
 	rm $OUTPUT/*.zip
-	$KRAKEN --db /home/services/metagenomics/db/16s --paired --gzip-compressed --threads 4 --use-names --output /dev/null --report $OUTPUT/${FQ1%fastq.gz}report $INPUTDATA/$FQ1 $INPUTDATA/$FQ2
-	$BRAKEN -d /home/services/metagenomics/db/16s -i $OUTPUT/${FQ1%fastq.gz}report -o $OUTPUT/${FQ1%fastq.gz}abundance -r 300 -l G -t 5
+	$KRAKEN --db /home/services/metagenomics/db/16s_50k --minimum-base-quality 20 --confidence --paired --gzip-compressed --threads 4 --use-names --output /dev/null --report $OUTPUT/${FQ1%fastq.gz}report $INPUTDATA/$FQ1 $INPUTDATA/$FQ2
+	$BRAKEN -d /home/services/metagenomics/db/16s_50k -i $OUTPUT/${FQ1%fastq.gz}report -o $OUTPUT/${FQ1%fastq.gz}abundance -r 300 -l G -t 5
 	rm $INPUTDATA/$FQ1 $INPUTDATA/$FQ2
 done
