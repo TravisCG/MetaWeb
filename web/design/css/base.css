@@ -1,0 +1,27 @@
+.color-primary-0 { color: #AA9139 }	/* Main Primary color */
+.color-primary-1 { color: #FFFBEE }
+.color-primary-2 { color: #D9C789 }
+.color-primary-3 { color: #7B6004 }
+.color-primary-4 { color: #4C3B00 }
+
+body {
+  background-color: white;
+}
+
+#maincontent {
+  width: 60%;
+  margin-left: 20%;
+  margin-right: 20%;
+}
+
+.servicebox {
+  width: 90%;
+  margin-left: 5%;
+  margin-right: 5%;
+}
+
+button {
+  border-radius: 12px;
+  background-color: #D9C789;
+  padding: 5px 10px;
+}

@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <title>NAIRC microbiology webservices</title>
+    <link rel="stylesheet" href="design/css/base.css" type="text/css" />
+  </head>
+  <body>
+    <div id="maincontent">
+      <h1 class="color-primary-0">Wellcome to the NAIRC microbiology webservices</h1>
+      <h2 class="color-primary-0">General notes</h2>
+      <p class="color-primary-4">
+        This server does not contain any sequences. After the analysis done every sequence data wiped out. You can find only results here.
+      </p>
+      <h2 class="color-primary-0">Services</h2>
+      <!-- Quality control -->
+      <div class="servicebox">
+        <h3 class="color-primary-0">Quality control</h3>
+        <p>
+          Check the quality of the sequences with <a href="https://www.bioinformatics.babraham.ac.uk/projects/fastqc/">FastQC</a>.
+        </p>
+        <a href="qcresults.php"><button>Browse results</button></a>
+      </div>
+      <!-- Metagenomics -->
+      <div class="servicebox">
+        <h3 class="color-primary-0">Metagenomics</h3>
+        <p class="color-primary-4">
+          Metagenomics service based on <a href="https://www.ccb.jhu.edu/software/kraken2/">Kraken2</a> and <a href="https://ccb.jhu.edu/software/bracken/">Braken</a>. Right now only bacterial 16S analysis can be run.
+          Results can be checked after login.
+        </p>
+        <a href="metaresults.php"><button>Browse results</button></a>
+        <a href="http://bacipc.naik.hu:3838/"><button>Visualize results in Pavian</button></a>
+      </div>
+      <!-- De-novo assembly -->
+      <div class="servicebox">
+        <h3 class="color-primary-0">De-novo assembly</h3>
+        <p class="color-primary-4">
+          Right now it is not implemented.
+        </p>
+        <button>Run</button>
+      </div>
+    </div>
+  </body>
+</html>
