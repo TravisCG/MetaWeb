@@ -14,6 +14,12 @@ do
 	FQ2=${FQ1/_R1_/_R2_}
 
 	mv $NAME $UPLOAD/$FQ2 $INPUTDATA
+
+	cutadapt -q 20,20 -m 40 $INPUTDATA/$FQ1 >$INPUTDATA/tmp1.fastq
+	cutadapt -q 20,20 -m 40 $INPUTDATA/$FQ2 >$INPUTDATA/tmp2.fastq
+	mv $INPUTDATA/tmp1.fasta $INPUTDATA/$FQ1
+	mv $INPUTDATA/tmp2.fastq $INPUTDATA/$FQ2
+
 	$FASTQC -o $OUTPUT $INPUTDATA/$FQ1 $INPUTDATA/$FQ2
 	rm $OUTPUT/*.zip
 	$KRAKEN --db /home/services/metagenomics/db/16s_50k --minimum-base-quality 20 --confidence --paired --gzip-compressed --threads 4 --use-names --output /dev/null --report $OUTPUT/${FQ1%fastq.gz}report $INPUTDATA/$FQ1 $INPUTDATA/$FQ2

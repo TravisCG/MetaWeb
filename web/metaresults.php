@@ -8,8 +8,10 @@
 <body>
 <div id="maincontent">
 <h1 class="color-primary-0">Taxonomical categories</h1>
+<form action="summarytable.php">
 <table>
 	<tr>
+		<th>Select</th>
 		<th>Name</th>
 		<th>Abundance estimation</th>
 		<th>Bracken report</th>
@@ -21,6 +23,10 @@ while( ($f = readdir($d)) ==! false ){
 	if(strrpos($f, "abundance") !== false){
 		$basename = str_replace(".abundance", "", $f);
 		print("\t<tr>\n");
+
+		print("\t\t<td>");
+		print('<input type="checkbox" name="table[]" title="Select it to include into the matrix" value="' . $basename . '">');
+		print("</td>\n");
 
 		print("\t\t<td>");
 		print($basename);
@@ -44,6 +50,8 @@ while( ($f = readdir($d)) ==! false ){
 closedir($d);
 ?>
 </table>
+<input type="submit" value="Download matrix">
+</form>
 </div>
 </body>
 </html>
