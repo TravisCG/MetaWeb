@@ -20,8 +20,8 @@
 <?php
 $d = opendir("metagenomics");
 while( ($f = readdir($d)) ==! false ){
-	if(strrpos($f, "abundance") !== false){
-		$basename = str_replace(".abundance", "", $f);
+	if(strrpos($f, "_bracken.report") !== false){
+		$basename = str_replace("_bracken.report", "", $f);
 		print("\t<tr>\n");
 
 		print("\t\t<td>");
@@ -50,7 +50,13 @@ while( ($f = readdir($d)) ==! false ){
 closedir($d);
 ?>
 </table>
-<input type="submit" value="Download matrix">
+Please select the taxonomical level:
+<select name="level" >
+	<option value="G">Genus</option>
+	<option value="F">Family</option>
+	<option value="P">Phylum</option>
+</select>
+<input type="submit" value="Download matrix" />
 </form>
 </div>
 </body>

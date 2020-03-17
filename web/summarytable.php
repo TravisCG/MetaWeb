@@ -1,12 +1,17 @@
 <?php
 header("Content-Type: text/plain");
 $matrix = array();
+$level  = "G";
+
+if(isset($_GET["level"])){
+	$level = $_GET["level"];
+}
 
 // Read all the abundance files
 echo("Taxon");
 foreach( $_GET["table"] as $basename){
 	echo("\t" . $basename);
-	$file = fopen("metagenomics/" . $basename . ".abundance", "r");
+	$file = fopen("metagenomics/" . $basename . "." . $level . ".abundance", "r");
 	fgets($file);
 	while( ($line = fgets($file)) !== false ){
 		$line = rtrim($line);
