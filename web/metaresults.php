@@ -13,7 +13,7 @@
 	<tr>
 		<th>Select</th>
 		<th>Name</th>
-		<th>Abundance estimation</th>
+		<th>Abundance estimation (Genus level)</th>
 		<th>Bracken report</th>
 		<th>Kraken report</th>
 	</tr>
@@ -33,7 +33,7 @@ while( ($f = readdir($d)) ==! false ){
 		print("</td>\n");
 
 		print("\t\t<td>");
-		print('<a href="metagenomics/'.$f.'">View</a>');
+		print('<a href="metagenomics/' . $basename . ".G.abundance" . '">View</a>');
 		print("</td>\n");
 
 		print("\t\t<td>");

@@ -31,7 +31,7 @@ while( ($f = readdir($d)) ==! false ){
 	if(strrpos($f, "_fastqc.html") ==! false){
 		$key = str_replace($repstr, "", $f);
 		if(array_key_exists($key, $results) === false){
-			$results[$key] = array("R1" => "", "R2" => "");
+			$results[$key] = array();//("R1" => "", "R2" => "");
 		}
 		if(strrpos($f, "_R1_") ==! false){
 			$results[$key]["R1"] = str_replace("_fastqc.html", "", $f);
@@ -45,10 +45,26 @@ closedir($d);
 
 foreach($results as $key => $value){
 	echo "<tr>\n";
-	echo "\t<td>" . $results[$key]["R1"]             . "</td>\n";
-	echo "\t<td>" . fastqclink($results[$key]["R1"]) . "</td>\n";
-	echo "\t<td>" . $results[$key]["R2"]             . "</td>\n";
-	echo "\t<td>" . fastqclink($results[$key]["R2"]) . "</td>\n";
+	if(array_key_exists("R1", $results[$key])){
+		echo "\t<td>" . $results[$key]["R1"]             . "</td>\n";
+		echo "\t<td>" . fastqclink($results[$key]["R1"]) . "</td>\n";
+		// Some times scientists upload only the R1 reads. Do not know why
+		if(array_key_exists("R2", $results[$key])){
+			echo "\t<td>" . $results[$key]["R2"]             . "</td>\n";
+			echo "\t<td>" . fastqclink($results[$key]["R2"]) . "</td>\n";
+		}
+		else{
+			echo "\t<td></td>\n";
+			echo "\t<td></td>\n";
+		}
+	}
+	else{
+		// If scientists upload single reads, the link can be found in R2
+		echo "\t<td>" . $results[$key]["R2"]             . "</td>\n";
+		echo "\t<td>" . fastqclink($results[$key]["R2"]) . "</td>\n";
+		echo "\t<td></td>\n";
+		echo "\t<td></td>\n";
+	}
 	echo "</tr>\n";
 }
 ?>
