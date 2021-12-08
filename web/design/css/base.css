@@ -25,3 +25,15 @@ button {
   background-color: #D9C789;
   padding: 5px 10px;
 }
+
+th,td {
+   border-bottom: 1px solid #ddd;
+}
+
+tr:nth-child(even) {
+   background-color: #AA9139;
+}
+
+table {
+  margin-bottom: 20px;
+}

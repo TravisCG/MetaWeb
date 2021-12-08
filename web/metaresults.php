@@ -14,8 +14,8 @@
 		<th>Select</th>
 		<th>Name</th>
 		<th>Date</th>
-		<th>Abundance estimation (Genus level)</th>
-		<th>Bracken report</th>
+		<th>Abundance estimation<br /> (Genus level)</th>
+		<th>Bracken report <br />(Genus level)</th>
 		<th>Kraken report</th>
 	</tr>
 <?php
@@ -24,16 +24,16 @@
 $results = array();
 $d = opendir("metagenomics");
 while( ($f = readdir($d)) ==! false ){
-	if(strrpos($f, "_bracken.report") !== false){
-		$basename = str_replace("_bracken.report", "", $f);
-		$time = filectime($f);
+	if(strrpos($f, "_bracken_genuses.report") !== false){
+		$basename = str_replace("_bracken_genuses.report", "", $f);
+		$time = filectime("metagenomics/" . $f);
 		$results[$basename] = $time;
 	}
 }
 closedir($d);
 
 // Order them using file time
-krsort($results);
+arsort($results);
 
 // Creating HTML table
 foreach($results as $basename => $time){
@@ -48,7 +48,7 @@ foreach($results as $basename => $time){
 	print("</td>\n");
 
 	print("\t\t<td>");
-	print($time);
+	print(date("Y-m-d", $time));
 	print("</td>\n");
 
 	print("\t\t<td>");
@@ -56,7 +56,7 @@ foreach($results as $basename => $time){
 	print("</td>\n");
 
 	print("\t\t<td>");
-	print('<a href="metagenomics/' . $basename . "_bracken.report" . '">View</a>');
+	print('<a href="metagenomics/' . $basename . "_bracken_genuses.report" . '">View</a>');
 	print("</td>\n");
 
 	print("\t\t<td>");
